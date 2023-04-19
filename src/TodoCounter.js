@@ -1,10 +1,12 @@
 import React from "react";
 import './todoStyle.css';
 
-const TodoCounter = () => {
+const TodoCounter = ({ total, completed }) => {
+
+
     return(
     <h2 className="todoCounter">
-        Tenemos q completar un account en clases mas avanzadas
+        Completaste {completed} de {total} ToDos!
     </h2>
     )
 }

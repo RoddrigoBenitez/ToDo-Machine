@@ -7,7 +7,7 @@ import { TodoButton } from './TodoButton'
 import './todoStyle.css';
 {/*import './App.css';*/}
 
-const todos = [
+const defaulTodos = [
   { text: 'Cortar Cebolla ejem', completed: true },
   { text: 'tomar agua', completed: false },
   { text: 'Aprender Vue', completed: true },
@@ -15,14 +15,38 @@ const todos = [
 ]
 
 function App() {
+
+  const [todos, setTodos] = React.useState(defaulTodos);
+
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const [searchValue, setSearchValue] = React.useState('');
+
+  let searchedTodos = [];
+
+  if (!searchedTodos.length >= 1){
+    searchedTodos = todos;
+  } else{
+    searchedTodos = todos.filter(todo =>{
+      const todoText = todo.text.toLowerCase();
+    })
+
+
+    
+  }
+
   return (
     <React.Fragment>
-      <TodoCounter />
+      <TodoCounter total={totalTodos} completed={completedTodos} />
       
-      <TodoSearch />
+      <TodoSearch 
+        searchValue={searchValue} 
+        setSearchValue={setSearchValue}
+      />
 
       <TodoList>
-        {todos.map(todo =>(
+        {searchedTodos.map(todo =>(
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
         ) )}
       </TodoList>

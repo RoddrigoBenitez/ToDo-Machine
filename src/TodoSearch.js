@@ -3,9 +3,8 @@ import './todoStyle.css';
 
 
 
-const TodoSearch = () => {
+const TodoSearch = ({ searchValue, setSearchValue }) => {
 
-    const [searchValue, setSearchValue] = React.useState('') ;
 
 
     const onSearchValue = (event) =>{
