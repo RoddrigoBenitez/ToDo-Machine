@@ -22,19 +22,43 @@ function App() {
   const totalTodos = todos.length;
 
   const [searchValue, setSearchValue] = React.useState('');
-
+  // filtra las notas del input dejando las q buscamos
   let searchedTodos = [];
 
-  if (!searchedTodos.length >= 1){
+  if (!searchValue.length >= 1){
     searchedTodos = todos;
   } else{
     searchedTodos = todos.filter(todo =>{
       const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
     })
-
-
-    
   }
+
+  // const para complet notas
+
+const completeTodo = (text) => {
+  const todoIndex = todos.findIndex(todo => todo.text ===  text);
+
+  const newTodos = [...todos];
+
+  newTodos[todoIndex].completed = true;
+
+  setTodos(newTodos);
+
+};
+
+const deleteTodo = (text) => {
+  const todoIndex = todos.findIndex(todo => todo.text ===  text);
+
+  const newTodos = [...todos];
+
+  newTodos.splice(todoIndex, 1);
+
+  setTodos(newTodos);
+
+};
+
 
   return (
     <React.Fragment>
@@ -47,7 +71,9 @@ function App() {
 
       <TodoList>
         {searchedTodos.map(todo =>(
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={()=> completeTodo(todo.text) } 
+          onDelete={()=> deleteTodo(todo.text)}
+          />
         ) )}
       </TodoList>
 
