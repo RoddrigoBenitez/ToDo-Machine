@@ -3,16 +3,34 @@ import { AppUI } from './AppUI';
 
 {/*import './App.css';*/}
 
-const defaulTodos = [
+{/*const defaulTodos = [
   { text: 'Cortar Cebolla ejem', completed: true },
   { text: 'tomar agua', completed: false },
   { text: 'Aprender Vue', completed: true },
   { text: 'Ver trabajo', completed: false },
-]
+]*/}
 
 function App() {
 
-  const [todos, setTodos] = React.useState(defaulTodos);
+  const localStorageTodo = localStorage.getItem('TODOS_V1');
+
+  let parsedTodos;
+  if(!localStorageTodo){
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  }else{
+    parsedTodos = JSON.parse(localStorageTodo);
+  }
+
+  const saveTodos = (newTodos) =>{
+    const stringifiedTodos= JSON.stringify(newTodos);
+    localStorage.setItem('Todos_V1', stringifiedTodos);
+    setTodos(newTodos);
+  };
+
+
+
+  const [todos, setTodos] = React.useState(parsedTodos);
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -40,7 +58,7 @@ const completeTodo = (text) => {
 
   newTodos[todoIndex].completed = true;
 
-  setTodos(newTodos);
+  saveTodos(newTodos);
 
 };
 
@@ -51,7 +69,7 @@ const deleteTodo = (text) => {
 
   newTodos.splice(todoIndex, 1);
 
-  setTodos(newTodos);
+  saveTodos(newTodos);
 
 };
 
