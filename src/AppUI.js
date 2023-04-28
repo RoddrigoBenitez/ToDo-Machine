@@ -6,7 +6,9 @@ import { TodoItem } from './TodoItem';
 import { TodoButton } from './TodoButton'
 import './todoStyle.css';
 
-const AppUI = ({ 
+const AppUI = ({
+    loading,
+    error, 
     totalTodos,
     completedTodos,
     searchValue,
@@ -25,6 +27,10 @@ const AppUI = ({
       />
 
       <TodoList>
+        {loading && <p>Estamos cargando</p>}
+        {error && <p>Hubo un error</p>}
+        {(!loading && !searchedTodos.lengt) && <p>Crea tu primer TODO!</p>}
+
         {searchedTodos.map(todo =>(
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={()=> completeTodo(todo.text) } 
           onDelete={()=> deleteTodo(todo.text)}
