@@ -8,14 +8,16 @@ import { TodoButton } from './TodoButton'
 import './todoStyle.css';
 
 const AppUI = () =>{
+  const { error, loading, searchedTodos, completeTodo, deleteTodo } = React.useContext(TodoContext);
+
+
     return( 
     <React.Fragment>
       <TodoCounter />
       
       <TodoSearch />
 
-      <TodoContext.Consumer>
-        {value =>(
+      
             <TodoList>
             {loading && <p>Estamos cargando</p>}
             {error && <p>Hubo un error</p>}
@@ -27,9 +29,8 @@ const AppUI = () =>{
               />
             ) )}
           </TodoList>
-        )
-        }
-      </TodoContext.Consumer>
+       
+
 
       <TodoButton />
       

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorege";
 
-const TodoProvider = () => {
+const TodoProvider = (props) => {
     const {
         item: todos,
         saveItem: saveTodos,
@@ -52,19 +52,19 @@ const TodoProvider = () => {
     };
 
 
-    return(
-        <TodoContext.Provider value={{
-            loading,
-            error, 
-            totalTodos, 
-            completedTodos,
-            searchValue, 
-            setSearchValue,
-            searchedTodos,
-            completeTodo,
-            deleteTodo,
-        }}>
-            {props.children}
+    return (
+      <TodoContext.Provider value={{
+        loading,
+        error,
+        totalTodos,
+        completedTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+      }}>
+        {props.children}
         </TodoContext.Provider>
     );
 }
