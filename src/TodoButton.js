@@ -1,9 +1,9 @@
 import React from "react";
 import './todoStyle.css';
 
-const TodoButton = () => {
+const TodoButton = (props) => {
     const onClickButton = () => {
-        alert('Hello');
+        props.setOpenModal(true);
     }
     
     
