@@ -7,6 +7,7 @@ import { TodoItem } from "./TodoItem";
 import { TodoButton } from "./TodoButton";
 import { Modal } from "./modal";
 import "./todoStyle.css";
+import { TodoForm } from "./todoForm";
 
 const AppUI = () => {
   const { error, 
@@ -43,7 +44,7 @@ const AppUI = () => {
 
       {!!openModal && (
         <Modal>
-        <p>ACA ESTOY</p>
+          <TodoForm />
         </Modal>
       )}
 
