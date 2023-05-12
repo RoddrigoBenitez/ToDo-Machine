@@ -4,9 +4,7 @@ import { TodoContext } from "./TodoContext";
 
 
 
-const TodoSearch = () => {
-
-    const { searchValue, setSearchValue } = React.useContext(TodoContext)
+const TodoSearch = ({ searchValue, setSearchValue }) => {
 
     const onSearchValue = (event) =>{
         console.log(event.target.value);
