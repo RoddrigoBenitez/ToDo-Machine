@@ -6,6 +6,10 @@
     padding: 48px;
 }
 
+.todoCounter--loading{
+  opacity: 45%;
+}
+
 .todoSearch {
     background: #F9FBFC;
     border-radius: 2px;
@@ -29,6 +33,10 @@
   
   .todoSearch:focus {
     outline-color: #61DAFA;
+  }
+
+  .todoSearch:disabled {
+    opacity: 25%;
   }
 
   ul {

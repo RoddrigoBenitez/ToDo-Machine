@@ -4,7 +4,7 @@ import './todoStyle.css';
 
 
 
-const TodoSearch = ({ searchValue, setSearchValue }) => {
+const TodoSearch = ({ searchValue, setSearchValue, loading }) => {
 
     const onSearchValue = (event) =>{
         console.log(event.target.value);
@@ -13,7 +13,8 @@ const TodoSearch = ({ searchValue, setSearchValue }) => {
 
     return(
         <input className="todoSearch" placeholder='Buscar' 
-        value={searchValue} onChange={onSearchValue} />
+        value={searchValue} onChange={onSearchValue}
+        disabled={loading} />
     )
 }
 
