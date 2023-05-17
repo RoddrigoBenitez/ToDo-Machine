@@ -12,6 +12,7 @@ import { Modal } from "../modal";
 import { TodoForm } from "../todoForm";
 import "../todoStyle.css";
 import { useTodos } from './useTodos';
+import { ChangeAlertWithStorlis } from '../changeAlert';
 
 
 
@@ -87,6 +88,8 @@ return (
     <TodoButton 
       setOpenModal={setOpenModal}
     />
+
+    <ChangeAlertWithStorlis />
   </React.Fragment>
 );
 }
