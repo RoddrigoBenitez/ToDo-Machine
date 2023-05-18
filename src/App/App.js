@@ -31,6 +31,7 @@ function App() {
     searchValue, 
     setSearchValue,
     addTodo,
+    sincronizeTodos,
   } = useTodos();
 
 
@@ -89,7 +90,7 @@ return (
       setOpenModal={setOpenModal}
     />
 
-    <ChangeAlertWithStorlis />
+    <ChangeAlertWithStorlis sincronize={sincronizeTodos} />
   </React.Fragment>
 );
 }
