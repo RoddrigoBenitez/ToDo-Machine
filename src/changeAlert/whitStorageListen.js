@@ -20,7 +20,7 @@ function withStoragelistener(WrapperComponent){
         return (
             <WrapperComponent 
                 show={storageChange} 
-                toggleShow={setStorageChange} 
+                toggleShow={toggleShow} 
             />
         )
     }
