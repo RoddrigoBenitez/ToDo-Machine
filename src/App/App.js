@@ -12,7 +12,7 @@ import { Modal } from "../modal";
 import { TodoForm } from "../todoForm";
 import "../todoStyle.css";
 import { useTodos } from './useTodos';
-import { ChangeAlertWithStorlis } from '../changeAlert';
+import { ChangeAlert } from '../changeAlert';
 
 
 
@@ -90,7 +90,7 @@ return (
       setOpenModal={setOpenModal}
     />
 
-    <ChangeAlertWithStorlis sincronize={sincronizeTodos} />
+    <ChangeAlert sincronize={sincronizeTodos} />
   </React.Fragment>
 );
 }
