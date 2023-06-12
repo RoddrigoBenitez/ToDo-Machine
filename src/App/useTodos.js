@@ -10,11 +10,11 @@ const useTodos = () => {
         error,
       } = useLocalStorage('TODOS_V1', []);
     
+      const [searchValue, setSearchValue] = React.useState('');
       const [openModal, setOpenModal] = React.useState(false);
       const completedTodos = todos.filter(todo => !!todo.completed).length;
       const totalTodos = todos.length;
     
-      const [searchValue, setSearchValue] = React.useState('');
       // filtra las notas del input dejando las q buscamos
       let searchedTodos = [];
     
@@ -66,24 +66,28 @@ const useTodos = () => {
     };
 
 
+    const states = {
+      loading,
+      error,
+      totalTodos,
+      completedTodos,
+      searchValue,
+      searchedTodos,
+      openModal,
+      
+    };
 
-    return (
-      {
-        loading,
-        error,
-        totalTodos,
-        completedTodos,
-        searchValue,
-        setSearchValue,
-        searchedTodos,
-        completeTodo,
-        deleteTodo,
-        addTodo,
-        openModal,
-        setOpenModal,
-        sincronizeTodos,
-      }
-    );
+    const stateUpdaters = {
+      setOpenModal,
+      setSearchValue,
+      completeTodo,
+      deleteTodo,
+      addTodo,
+      sincronizeTodos,
+
+    };    
+    
+    return {states, stateUpdaters}
 }
 
 
